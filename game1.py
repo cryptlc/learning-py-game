@@ -8,6 +8,7 @@ linebreak = "\n========================================\n"
 def start():
 	print("\n\n\n\n\n\n\n\n\n\n")
 	print("\nWelcome to my dungeon.")
+	print("\nThe goal is to aquire the key and escape through the locked door.\n")
 	print("Good Luck!\n")
 	choice = input("Do you think you can handle it?[y/n]> ")
 
@@ -18,7 +19,7 @@ def start():
 	room_3_exit = True
 	room_4_exit = True
 	room_4_item = True
-	bleed = ['I give up', 'k like... there are 3 choices... how the fuck', 'You\'re fucking helpless', 'You\'re running out of blood', 'You\'re bleeding even more', 'You\'re bleeding']
+	bleed = ['i give up', , '...k', 'k like... there are 3 choices... how the fuck', 'you\'re fucking helpless', 'you\'re running out of blood', 'you\'re bleeding even more', 'you\'re bleeding']
 
 	if choice == "y":
 		entryway()
