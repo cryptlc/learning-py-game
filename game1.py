@@ -19,7 +19,7 @@ def start():
 	room_3_exit = True
 	room_4_exit = True
 	room_4_item = True
-	bleed = ['i give up', , '...k', 'k like... there are 3 choices... how the fuck', 'you\'re fucking helpless', 'you\'re running out of blood', 'you\'re bleeding even more', 'you\'re bleeding']
+	bleed = ['i give up', '...k', 'k like... there are 3 choices... how the fuck', 'you\'re fucking helpless', 'you\'re running out of blood', 'you\'re bleeding even more', 'you\'re bleeding']
 
 	if choice == "y":
 		entryway()
@@ -166,7 +166,6 @@ def room2fight():
 
 		else:
 			print(linebreak,"You dance uncontrollably outside of your control wasting time as the Angry Badger approaches.", linebreak)
-			room2fight()
 
 def room2():
 	global room_2_exit
@@ -212,7 +211,6 @@ def room3fight():
 
 		else:
 			print(linebreak, "You decide you love Nickleback and uncontrollably dance.", linebreak)
-			room3fight()
 
 def room3():
 	global room_3_exit
@@ -256,20 +254,11 @@ def room3done():
 
 	choice = input("> ")
 
-	if choice == "west" and room_4_exit and room_4_item:
-		print(leave, linebreak)
-		room4fight()
-
-	elif choice == "west" and not room_4_exit and room_4_item:
-		print(leave, linebreak)
-		room4choice()
-
-	elif choice == "west" and not room_4_exit and not room_4_item:
+	if choice == "west" and not room_4_exit and not room_4_item:
 		print(linebreak,"You have already been here.")
 		print("A strong unctrollable urge keeps you from entering.")
 		print("Choice(s): north, east, west")
 		room3done()
-
 
 	elif choice == "north":
 		print(leave, linebreak)		
@@ -282,7 +271,7 @@ def room3done():
 
 	else:
 		print(linebreak,"You dance uncontrollably outside of your control... Shakira appears from nowhere, soffs, and tells you to choose a fkin direction.", linebreak)
-		room3()			
+		room3done()			
 
 def room4fight():
 	print(enter)
@@ -314,7 +303,6 @@ def room4fight():
 
 		else:
 			print(linebreak, "You look at \"this photograph\" for a good while." , linebreak)
-			room4fight()
 
 def room4choice():
 	global room_4_exit, room_4_item
@@ -336,6 +324,10 @@ def room4choice():
 		print(leave, linebreak)
 		room_4_exit = False
 		room3()
+
+	else:
+		print(linebreak,f"You lay down and take a snooze next to the Hedgehog... ouch... spines...{bleed.pop()}", linebreak)
+		room4choice()
 
 def room4():
 
@@ -366,8 +358,7 @@ def room5():
 
 	elif choice == "n":
 		print(leave)
-		print("Loading last save...")
-		print("Hopefully you didn't have the key!")
+		print(linebreak,"Loading last save...", linebreak)
 		room3()
 
 	else:
