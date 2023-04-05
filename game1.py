@@ -19,7 +19,7 @@ def start():
 	room_3_exit = True
 	room_4_exit = True
 	room_4_item = True
-	bleed = ['i give up', '...k', 'k like... there are 3 choices... how the fuck', 'you\'re fucking helpless', 'you\'re running out of blood', 'you\'re bleeding even more', 'you\'re bleeding']
+	bleed = [False, 'i give up', '...k', 'k like... there are 3 choices... how the fuck', 'you\'re fucking helpless', 'you\'re running out of blood', 'you\'re bleeding even more', 'you\'re bleeding']
 
 	if choice == "y":
 		entryway()
@@ -33,6 +33,13 @@ def start():
 	else:
 		print("\n\n... Try Again...")
 		start()
+
+def dedcheck():
+	bstatus = bleed.pop()
+	if bstatus == False:
+		death()
+	else:
+		print(f"{bstatus}", linebreak)
 
 def death():
 	print(linebreak,"You're dead AF, thanks for playing")
@@ -105,10 +112,12 @@ def room1fight():
 			print(linebreak,"The Angry Badger takes the kick in stride and now looks more angry.")
 
 		elif choice == "hug":
-			print(linebreak,f"The Angry Badger takes the opportunity to gnaw your neck and now {bleed.pop()}")
+			print(linebreak, "The Angry Badger takes the opportunity to gnaw your neck and now")
+			dedcheck() 
 
 		elif choice == "pickup item":
-			print(linebreak,"The Angry Badger lunges at your neck as you stoop down to pickup the Item")
+			print(linebreak,"The Angry Badger lunges at your neck as you stoop down to pickup the item and now")
+			dedcheck()
 
 		elif choice == "flee":
 			print(linebreak,"K bai")
@@ -158,7 +167,8 @@ def room2fight():
 			print(linebreak,"The badger takes the kick in stride and now looks more angry.")
 
 		elif choice == "hug":
-			print(linebreak, f"The badger takes the opportunity to gnaw your neck and now {bleed.pop()}")
+			print(linebreak, "The badger takes the opportunity to gnaw your neck and now")
+			dedcheck()
 
 		elif choice == "flee":
 			print(linebreak, "K bai")
@@ -203,7 +213,8 @@ def room3fight():
 			room3()
 
 		elif choice == "hug":
-			print(linebreak, f"As you lean down to hug the squirrel it jumps onto your back and scratches violently before jumping off {bleed.pop()}")
+			print(linebreak, "The Undead Squirrel takes the opportunity to gnaw your neck and now")
+			dedcheck()
 
 		elif choice == "flee":
 			print(linebreak,"K bai")
@@ -285,11 +296,13 @@ def room4fight():
 		choice = input("> ")
 
 		if choice == "slap":
-			print(linebreak,f"Whelp... you're hand is full of spines... that was stupid {bleed.pop()}.")
-			
+			print(linebreak,"Whelp... you're hand is full of spines... that was stupid")
+			dedcheck()
+
 		elif choice == "kick":
-			print(linebreak,f"As you pull back your foot full of spines a tear drops from the Prickely Hedgehog's eye {bleed.pop()}.")
-		
+			print(linebreak,"As you pull back your foot full of spines a tear drops from the Prickely Hedgehog's eye")
+			dedcheck()
+
 		elif choice == "hug":
 			print(linebreak,"Although Your chest is full of spines and bleeding... the Prickely Hedgehog looks very satisfied and crawls to a corner to nap.", linebreak)
 			room4choice()
@@ -326,7 +339,8 @@ def room4choice():
 		room3()
 
 	else:
-		print(linebreak,f"You lay down and take a snooze next to the Hedgehog... ouch... spines...{bleed.pop()}", linebreak)
+		print(linebreak,"You lay down and take a snooze next to the Hedgehog... ouch... spines...")
+		dedcheck()
 		room4choice()
 
 def room4():
@@ -342,7 +356,8 @@ def room4():
 		room3()
 
 	else:
-		print(linebreak,f"You lay down and take a snooze next to the Hedgehog... ouch... spines...{bleed.pop()}", linebreak)
+		print(linebreak,f"You lay down and take a snooze next to the Hedgehog... ouch... spines...")
+		dedcheck()
 		room4()
 
 def room5():
@@ -352,7 +367,7 @@ def room5():
 	choice = input("> ")
 	
 	if choice == "y":
-		print("ERROR: ROOM NOT RENDERED")		
+		print("ERROR: ROOM NOT RENDERED\n" * 10)		
 		print("You fall off the map and die.")
 		death()
 
@@ -366,4 +381,3 @@ def room5():
 		room5()
 
 start()
-
